@@ -1,0 +1,199 @@
+https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16
+https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/https://medium.com/google-cloud/kubernetes-110-your-first-deployment-bf123c1d3f8
+explore-intro/#:~:text=Each%20Node%20is%20managed%20by,the%20Nodes%20in%20the%20cluster.
+https://linchpiner.github.io/k8s-multi-container-pods.html
+https://www.cncf.io/certification/cka/
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+https://www.youtube.com/watch?v=tpzA3AJt2jQ
+https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+
+aws
+	eks setup - https://www.youtube.com/watch?v=p6xDCz00TxU
+	eks util - https://github.com/weaveworks/eksctl
+	eks docs - https://eksctl.io/introduction/
+	eks is only for creating pods in the cloud and configuring kubectl to work with them
+	
+	nirmata - https://nirmata.com/
+		eks gui interface
+
+
+brew update
+brew install minikube
+kubectl
+minikube
+
+minikube status - shows status of minikube cluster
+minikube start --vm-driver=hyperkit --v=7 --alsologtostderr
+minikube start - starts cluster
+
+kubectl config view - shows kubectl configuration (for the kubectl application)
+
+kubectl cluster-info - gets information on initial cluster
+
+pod - smallest unit 
+deployment - abstraction over pods ?
+	all CRUD operations happen on deployment level
+	everything follows automatically
+replicaset - manages a pod
+pod blueprint - yaml ?
+
+kubectl get nodes - gets status of nodes
+kubectl get pod - checks status of pods
+kubectl get services - gets services
+kubectl get deployment - gets current deployments
+kubectl get replicaset - gets replicasets
+	kubectl get rs 
+
+kubectl get events - gets events from the pods
+
+kubectl --h - help command
+kubectl create 
+kubectl create deployment nginx-depl --image=nginx
+kubectl create deployment NAME --image=image
+	creates deployment
+	image uses images from docker
+
+	blueprint for creating pods
+	most basic configuration for deployment
+		name and image to use
+	rest defaults
+
+kubectl edit deployment [depl name] - displays yaml file of deployment
+	when you save the change, it redeploys that deployment
+
+kubectl logs [podName] - shows what the application running inside the pod log
+kubectl describe pod [podName] - gets additional information about particular pod
+kubectl exec -it [podName] -- bin/bash - Gets terminal of container
+kubectl delete deployment [deploymentName] - deletes deployment
+kubectl apply -f [fileName.yaml] - takes configuration file and executes it
+kubectl delete -f [fileName.yaml] - deletes a deployment based on its configuration
+	[can omit pod name if you only have a single container in pod]
+
+kubectl run nginx --image=nginx --dry-run=client --o yaml > pod.yaml
+	creates yaml file of nginx pod
+
+kubectl explain - (documentation of resource) will give you whole structure of something
+kubectl explain pod.metadata 
+kubectl explain pod.spec
+	can use 'grep -i' with these commands
+
+kubectl api-resources | grep -i mon - provide daemonset info
+
+kubectl edit - changes values in run time
+
+kubectl proxy - creates a proxy to cluster
+	need to create a proxy before cURL to interact
+
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+echo Name of the Pod: $POD_NAME
+	Exports podname .... for something
+
+services
+	Services allow pods to expose ip address outside of the cluster. 
+	Each pod has a unique IP address
+
+	kubectl expose deployment/[deployment name] --type="[type of configuration]" --port 8080
+		x
+
+		kubectl describe deployment/[deployment name]
+
+	kubectl delete service -l [label]
+		deletes service, run get services after to verify
+
+	export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+	echo NODE_PORT=$NODE_PORT
+		Adds port to variable NODE_PORT
+
+Scaling
+	used force and monitor Scaling
+
+	kubtectl get rs
+		DESIRED displays the desired number of replicas of the application, which you define when you create the Deployment. This is the desired state.
+		CURRENT displays how many replicas are currently running.
+
+	kubectl scale deployments/[deploymentName] --replicas=4
+		Forces scaling to deployment
+
+	kubectl get pods -o wide	
+		gets pods... not sure about the -o wide
+
+Rolling Update
+	Allows you to update application by changing images
+	Maintains uptime while you update apps
+
+	kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+		Changes image of item in deployment
+
+	kubectl get deployments
+		check the status of deployments
+			NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+			kubernetes-bootcamp   3/4     2            3           42m
+
+	kubectl rollout status deployments/kubernetes-bootcamp
+		confirms update of a rolling status
+	
+	kubectl rollout undo deployments/kubernetes-bootcamp
+		undoes a rollout
+
+
+CKA Exam 
+	Kubernetes Basic Modules - https://kubernetes.io/docs/tutorials/kubernetes-basics/
+		create a k cluster
+		deploy an app
+		explore your app
+		expose your app publicly
+		scale up your app
+		update your app
+
+	practical exam, no multiple choice
+	2 hours
+	15-20 questions
+	Open 2 tabs only in chrome browser
+		exam
+		kube io page
+	can use notepad
+	can flag questions
+
+	kubernetes.io/docs/concepts/
+	kubernetes.io/docs/tasks/
+	kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+	kubernetes.io/docs/
+	github.com/kubernetes/
+	kubernetes.io/blog/
+
+	kubernetes site is allowed during exam
+	dont need to create yaml file from scratch
+	dry-run option to create the template file, make some required small changes as per questions
+
+	import  - CKA exam
+		pod
+		deployment
+		rollout/set image/upgrade
+		replicaset
+		service
+		static pod
+		multicontainer port
+		daemonsets
+		jsonpath
+		customcolumn
+		sort.by
+		secret
+		configmap
+		volume
+		role/rolebinding/serviceaccount
+		env variable
+		taint & toleration
+		drain
+		label & selector
+		etcd backup/restore
+		tls bootstrapping
+		master and worker node installation
+
+	practice
+	be familiar with docs
+	create objects with yaml files and reuse it
+	kubectl expose pod redix --port=6379 --name redis-service --dry-run -o yaml
+
+
+
