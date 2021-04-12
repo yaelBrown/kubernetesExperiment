@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="kubernetes-spring">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/kubernetes-spring.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
