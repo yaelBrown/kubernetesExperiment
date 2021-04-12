@@ -1,7 +1,0 @@
-FROM python:latest
-
-ADD app.py .
-
-RUN pip install flask flask_cors
-
-CMD ["python3", "./app.py"]
