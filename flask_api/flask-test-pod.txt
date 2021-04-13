@@ -1,0 +1,44 @@
+Name:         flask-test
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Mon, 12 Apr 2021 14:37:33 -0500
+Labels:       run=flask-test
+Annotations:  <none>
+Status:       Pending
+IP:           
+IPs:          <none>
+Containers:
+  flask-test:
+    Container ID:   
+    Image:          python:latest
+    Image ID:       
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-276xs (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  default-token-276xs:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-276xs
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  54s   default-scheduler  Successfully assigned default/flask-test to minikube
+  Normal  Pulling    54s   kubelet            Pulling image "python:latest"

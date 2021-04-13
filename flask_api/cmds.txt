@@ -1,0 +1,174 @@
+ 2164  cd kubernetesExperiment
+ 2165  l
+ 2166  cd flask_api
+ 2167  docker build -t yael_flask:latest .
+ 2168  docker run -d -p 5000:5000 yael_flask
+ 2169  docker build -t flask_test flask_api/yael_flask:latest
+ 2170  docker build -t flask_test/flask_api:latest .
+ 2171  docker run -d -p 5000:5000 yael_flask
+ 2172  docker run -d -p 5000:5000 yael_flask/yael_flask:latest
+ 2173  docker build -t flask_test/flask_api:latest .
+ 2174  docker build -t flask_test:latest
+ 2175  docker build -t flask_test
+ 2176  docker build -t flask_test:latest .
+ 2177  docker run flask_test
+ 2178  docker run -d -p 5000:5000 flask_test
+ 2179  docker down
+ 2180  docker stop
+ 2181  docker stop flask_test
+ 2182  l
+ 2183  docker ps
+ 2184  docker stop 0157ef188d61
+ 2185  docker ps
+ 2186  k
+ 2187  l
+ 2188  source ~./bash_profile
+ 2189  source ~/.bash_profile
+ 2190  k
+ 2191  k get pods
+ 2192  m
+ 2193  m start
+ 2194  k
+ 2195  k config use-context minikube
+ 2196  k get pods
+ 2197* l
+ 2198* cd ..
+ 2199* l
+ 2200* git status
+ 2201* git add .
+ 2202* git commit -m "trying to deploy flask app to kube and minikube"
+ 2203* gp
+ 2204* l
+ 2205* git pull
+ 2206* pg
+ 2207* gp
+ 2208* git status
+ 2209* git add .
+ 2210* git commit -m "pushing after pull"
+ 2211* gp
+ 2212  k get k cluster-info
+ 2213  k cluster-info
+ 2214  k get nodes
+ 2215  m dashboard
+ 2216  k run
+ 2217  docker ps
+ 2218  docker images
+ 2219  history
+ 2220  clear
+ 2221  k run flask_test --port=8080
+ 2222  k run flask_test --image=flask_test --port=8080
+ 2223  k run flask-test --image=flask_test --port=8080
+ 2224  k get pods
+ 2225  l
+ 2226  docker images
+ 2227  k get pods
+ 2228  k describe flask-test
+ 2229  k get containers
+ 2230  k get nodes
+ 2231  k get services
+ 2232  k get deploymnet
+ 2233  k run flask-test --image=flask_test:latest --port=8080
+ 2234  k delete pods flask-test
+ 2235  k run flask-test --image=flask_test:latest --port=8080
+ 2236  ll
+ 2237  l
+ 2238  k get pods
+ 2239  k run flask-test --image=flask_test:latest --port=8080
+ 2240  k get pods
+ 2241  eval
+ 2242  eval $(minikube docker-env)
+ 2243  k -f create pod.yml
+ 2244  k get pods
+ 2245  k describe pod flask-test
+ 2246  k delete pods flask-test
+ 2247  l
+ 2248  k get pods
+ 2249  k run flask-test --image=python:latest --port=8080
+ 2250  k get pods
+ 2251  k describe flask-test
+ 2252  k describe pod flask-test
+ 2253  k describe pod flask-test > flask-test-pod.txt
+ 2254  k describe pod flask-test
+ 2255  history
+ 2256  k delete pods flask-test
+ 2257  k run flask-test --image=flask_test --imagePullPolicy=never --port=8080 
+ 2258  k run --help
+ 2259  k run flask-test --image=flask_test --image-pull-policy=never --port=8080 
+ 2260  k run flask-test --image=flask_test --image-pull-policy='never' --port=8080 
+ 2261  k run flask-test --image=flask_test --image-pull-policy=Never --port=8080 
+ 2262  k get pods
+ 2263  k describe pods flask-test
+ 2264  d images
+ 2265  d ps
+ 2266  d
+ 2267  d ps
+ 2268  d ps;d images
+ 2269* python3 app.py
+ 2270  d ps;d images
+ 2271  eval $(minikube docker-env)
+ 2272  eval
+ 2273  eval -h
+ 2274  type eval
+ 2275  history
+ 2276  k get pods
+ 2277  k describe flask-test
+ 2278  k describe pods flask-test
+ 2279  l
+ 2280  cd flask_api
+ 2281  eval $(minikube docker-env)
+ 2282  d build -t flask_test:v1
+ 2283  d build -t flask_test:v1 .
+ 2284  l
+ 2285  cd ..
+ 2286  l
+ 2287  d build -t flask_test:v1 .
+ 2288  k get pods
+ 2289  k delete flask-test
+ 2290  k delete pods flask-test
+ 2291  k get pods
+ 2292  k delete pod flask-test
+ 2293  k delete pods flask-test
+ 2294  k get pods
+ 2295  k run flask-test --image=flask_test: v1 --port=5000 --image-pull-policy=Never
+ 2296  k run flask-test --image=flask_test:v1 --port=5000 --image-pull-policy=Never
+ 2297  k get pods
+ 2298  l
+ 2299  k get pods
+ 2300  k describe pods
+ 2301  k get deployments
+ 2302  k get events
+ 2303  k config view
+ 2304  k config view > pod.yml
+ 2305  k expose deployment flask-test - type="LoadBalancer"
+ 2306  k get pods
+ 2307  k get deployments
+ 2308  k expose deployment flask-test type="LoadBalancer"
+ 2309  k get service
+ 2310  k get nodes
+ 2311  k create deployment
+ 2312  k create deployment --image=flask-test
+ 2313  k create deployment -h
+ 2314  k describe pods flask-test
+ 2315  l create deployment flask-test --image=flask_test:v1
+ 2316  l
+ 2317  k
+ 2318  k create deployment flask-test --image=flask_test:v1
+ 2319  k expose deployment flask-test type="LoadBalancer"
+ 2320  k expose -h
+ 2321  k get deployments
+ 2322  k describe deployments flask-test
+ 2323  k expose flask-test --port=80 --target-port=5000
+ 2324  k get deployments
+ 2325  k expose deployment flask-test --port=80 --target-port=5000
+ 2326  k describe deployments flask-test
+ 2327  k expose deployment flask-test --port=80 --target-port=5000 --type=LoadBalancer
+ 2328  k get services
+ 2329  k delete services flask-test
+ 2330  k get services
+ 2331  k expose deployment flask-test --port=80 --target-port=5000 --type=LoadBalancer
+ 2332  k get services
+ 2333  ifconfig
+ 2334  k get services
+ 2335  k describe services flask-test
+ 2336  k get service
+ 2337  m service flask-test
