@@ -7,6 +7,8 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 https://www.youtube.com/watch?v=tpzA3AJt2jQ
 https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
 
+https://testdriven.io/blog/running-flask-on-kubernetes/
+
 aws
 	eks setup - https://www.youtube.com/watch?v=p6xDCz00TxU
 	eks util - https://github.com/weaveworks/eksctl
